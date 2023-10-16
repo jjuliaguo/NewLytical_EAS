@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "app",
+    "name": "NewsLytical",
     "slug": "app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -15,7 +15,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.juliagu0.app"
     },
     "android": {
       "adaptiveIcon": {
@@ -25,6 +26,17 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "05071b65-53d7-4daf-9923-888155160f61"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/05071b65-53d7-4daf-9923-888155160f61"
     }
   }
 }
