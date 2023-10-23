@@ -30,13 +30,15 @@
     "extra": {
       "eas": {
         "projectId": "05071b65-53d7-4daf-9923-888155160f61"
+      },
+      "bugsnag": {
+        "apiKey": "b70c661275b47c442e38f160faa02517"
       }
     },
-    "runtimeVersion": {
-      "policy": "appVersion"
-    },
+    "runtimeVersion": "2.0.0",
     "updates": {
-      "url": "https://u.expo.dev/05071b65-53d7-4daf-9923-888155160f61"
+      
     }
+ 
   }
 }
