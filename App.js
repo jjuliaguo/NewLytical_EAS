@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { AppLoading } from "expo";
-
+//import { AppLoading } from "expo";
+import * as SplashScreen from 'expo-splash-screen'
 import navigationTheme from "./app/assets/components/navigation/navigationTheme";
 import AppNavigator from "./app/assets/components/navigation/AppNavigator";
 import OfflineNotice from "./app/assets/components/OfflineNotice";
@@ -76,14 +76,14 @@ function MyTabs() {
 */
 
 export default function App() {
-  
+  /*  
   const [user, setUser] = useState();
   const [isReady, setIsReady] = useState(false);
   const restoreUser = async () => {
     const user = await authStorage.getUser();
     if (user) setUser(user);
   };
-/*
+
   if (!isReady)
     return (
       <AppLoading
@@ -92,6 +92,41 @@ export default function App() {
       ></AppLoading>
     );
   */
+    
+
+  //===============================================  
+  const [user, setUser] = useState();
+  const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    async function loadApp() {
+      try {
+        // Load your assets and perform any necessary initialization here
+
+        // Simulate some loading time for demonstration
+        await new Promise(resolve => setTimeout(resolve, 2000));
+
+        // Restore the user
+        const user = await authStorage.getUser();
+        if (user) setUser(user);
+      } finally {
+        // When everything is ready, hide the splash screen
+        SplashScreen.hideAsync();
+        setIsReady(true);
+      }
+    }
+
+    // Show the splash screen and start loading
+    SplashScreen.preventAutoHideAsync(); // Prevent automatic hiding
+    loadApp();
+  }, []);
+
+  if (!isReady) {
+    return null; // Return nothing while the app is loading
+  }
+
+
+
   return (
     <AuthContext.Provider value={{ user, setUser }}>
     <OfflineNotice />
